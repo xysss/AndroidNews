@@ -1,28 +1,61 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'  //已经废弃被View Binding 取代
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
-
+/*apply from: 'and_res_guard.gradle'//压缩apk*/
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    signingConfigs {
+        app {
+            keyAlias sign.keyAlias
+            keyPassword sign.keyPassword
+            storeFile file(sign.file)
+            storePassword sign.storePassword
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    compileSdkVersion cfgs.compileSdkVersion
+    buildToolsVersion cfgs.buildToolsVersion
 
     defaultConfig {
         applicationId "com.xysss.androidnews"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion cfgs.minSdkVersion
+        targetSdkVersion cfgs.targetSdkVersion //开启目标版本以下的功能特性
+        versionCode cfgs.versionCode
+        versionName cfgs.versionName
+        testInstrumentationRunner cfgs.testInstrumentationRunner  //用于启用JUnit测试
+        resConfigs "zh-rCN", "zh-rHK", "zh-rMO", "zh-rTW" // 去除无用语言
+        signingConfig signingConfigs.debug
+        /* ndk {
+           // 设置支持的SO库架构 一般只设置这个就阔以设配所有的设备了，还可以减少apk的大小
+           abiFilters 'armeabi','armeabi-v7a'
+       }*/
     }
 
     buildTypes {
         release {
+            minifyEnabled true  //指定是否开启混淆
+            zipAlignEnabled true  //Zipalign优化
+            shrinkResources true  // 去除无用资源 与lint不同
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'  //混淆时使用的规则文件
+            signingConfig signingConfigs.app
+        }
+        debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            shrinkResources false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //使用Kotlin实验特性
+    androidExtensions {
+        experimental = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -30,10 +63,64 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
+
+    /*lintOptions {
+        disable 'InvalidPackage'
+        disable "ResourceType"
+        abortOnError false
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+        jumboMode = true
+        preDexLibraries = false
+        additionalParameters = [
+                '--multi-dex',//多分包
+                '--set-max-idx-number=60000'//每个包内方法数上限
+        ]
+    }*/
+
+    // 渠道包定义，默认定义的名称就是渠道名称
+   /* productFlavors {
+        // 0:dev, 1:qa, 2:线上
+        dev {
+            manifestPlaceholders = [ENVIRONMENT: "0",  CHANNEL_ID: "dev",  APP_VERSION: rootProject.ext.android.versionCode]
+        }
+        qa {
+            manifestPlaceholders = [ENVIRONMENT: "1",  CHANNEL_ID: "qa",  APP_VERSION: rootProject.ext.android.versionCode]
+            signingConfig signingConfigs.app
+        }
+        huawei {
+            manifestPlaceholders = [ENVIRONMENT: "2",  CHANNEL_ID: "biaozhun",  APP_VERSION: rootProject.ext.android.versionCode]
+        }
+        flavorDimensions "default"
+    }
+    buildToolsVersion = android.buildToolsVersion
+    //参考：https://blog.csdn.net/lablenet/article/details/78391457
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = outputFileName.replace("app", "MVVMSmart-kotlin")
+                // 中段(保持不变)
+                // 尾端
+                if (fileName.contains("-dev"))
+                    fileName = fileName.replace(".apk", "_v${defaultConfig.versionName}_t${releaseTime()}.apk")
+                else
+                    fileName = fileName.replace(".apk", "_v${defaultConfig.versionName}.apk")
+                //output.outputFile = new File(outputFile.parent, fileName)
+                outputFileName = fileName
+            }
+        }
+    }*/
+
+
+
 }
 
 dependencies {
-
+    implementation project(path: ':JetpackMvvm')  //项目核心框架
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -42,4 +129,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // hilt
+    implementation 'com.google.dagger:hilt-android:2.32-alpha'
+    kapt 'com.google.dagger:hilt-android-compiler:2.32-alpha'
 }
