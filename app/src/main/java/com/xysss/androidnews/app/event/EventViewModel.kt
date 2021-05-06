@@ -1,5 +1,6 @@
 package com.xysss.androidnews.app.event
 
+import com.xysss.androidnews.data.model.bean.CollectBus
 import com.xysss.jetpackmvvm.base.viewmodel.BaseViewModel
 import com.xysss.jetpackmvvm.callback.livedata.event.EventLiveData
 

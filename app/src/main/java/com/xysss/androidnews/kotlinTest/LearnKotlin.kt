@@ -5,7 +5,6 @@ package com.xysss.androidnews.kotlinTest
  * Time:2021/4/1616:14
  */
 
-
 fun main() {
     val a: Int = 10
     val b: Int = 20

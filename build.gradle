@@ -29,11 +29,11 @@ allprojects {
             url 'https://www.jitpack.io'
         }
     }
-    /*//配置这个
+    //配置这个
     tasks.withType(Javadoc) {
         options.addStringOption('Xdoclint:none', '-quiet')
         options.addStringOption('encoding', 'UTF-8')
-    }*/
+    }
 }
 
 task clean(type: Delete) {
