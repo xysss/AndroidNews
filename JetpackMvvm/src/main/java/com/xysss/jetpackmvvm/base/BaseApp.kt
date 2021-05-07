@@ -18,7 +18,6 @@ open class BaseApp :Application(), ViewModelStoreOwner {
     private var mFactory: ViewModelProvider.Factory? = null
 
     override fun getViewModelStore(): ViewModelStore {
-        TODO("Not yet implemented")
         return mAppViewModelStore
     }
 
