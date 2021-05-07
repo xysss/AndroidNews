@@ -152,7 +152,7 @@
                 android:textSize="13dp"
                 tools:text="分类·项目" />
 
-            <me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
+            <com.xysss.androidnews.app.weight.customview.CollectView
                 android:id="@+id/item_project_collect"
                 android:layout_width="24dp"
                 android:layout_height="24dp"

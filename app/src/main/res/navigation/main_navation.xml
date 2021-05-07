@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainfragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.MainFragment"
+        android:name="com.xysss.androidnews.ui.fragment.MainFragment"
         android:label="HomeFragment">
 
         <action
@@ -91,7 +91,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.login.LoginFragment"
+        android:name="com.xysss.androidnews.ui.fragment.login.LoginFragment"
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_registerFrgment"
@@ -103,7 +103,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFrgment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.login.RegisterFrgment"
+        android:name="com.xysss.androidnews.ui.fragment.login.RegisterFrgment"
         android:label="RegisterFrgment">
 
         <action
@@ -134,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchFragment"
+        android:name="com.xysss.androidnews.ui.fragment.search.SearchFragment"
         android:label="SearchFragment">
         <action
             android:id="@+id/action_searchFragment_to_searchResultFragment"
@@ -146,7 +146,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchResultFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.search.SearchResultFragment"
+        android:name="com.xysss.androidnews.ui.fragment.search.SearchResultFragment"
         android:label="SearchResultFragment"
         app:startDestination="@id/action_searchResultFragment_to_lookInfoFragment">
         <action
@@ -159,12 +159,12 @@
     </fragment>
     <fragment
         android:id="@+id/webFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.web.WebFragment"
+        android:name="com.xysss.androidnews.ui.fragment.web.WebFragment"
         android:label="WebFragment" />
 
     <fragment
         android:id="@+id/systemArrFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.tree.SystemArrFragment"
+        android:name="com.xysss.androidnews.ui.fragment.tree.SystemArrFragment"
         android:label="SystemArrFragment"
         app:destination="@id/loginFragment">
         <action
@@ -177,11 +177,11 @@
     </fragment>
     <fragment
         android:id="@+id/lookInfoFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.lookinfo.LookInfoFragment"
+        android:name="com.xysss.androidnews.ui.fragment.lookinfo.LookInfoFragment"
         android:label="LookInfoFragment" />
     <fragment
         android:id="@+id/integralFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralFragment"
+        android:name="com.xysss.androidnews.ui.fragment.integral.IntegralFragment"
         android:label="IntegralFragment">
         <action
             android:id="@+id/action_integralFragment_to_integralHistoryFragment"
@@ -193,21 +193,21 @@
     </fragment>
     <fragment
         android:id="@+id/integralHistoryFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.integral.IntegralHistoryFragment"
+        android:name="com.xysss.androidnews.ui.fragment.integral.IntegralHistoryFragment"
         android:label="IntegralHistoryFragment" />
 
     <fragment
         android:id="@+id/collectFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.collect.CollectFragment"
+        android:name="com.xysss.androidnews.ui.fragment.collect.CollectFragment"
         android:label="CollectFragment" />
 
     <fragment
         android:id="@+id/addAriticleFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.AddAriticleFragment"
+        android:name="com.xysss.androidnews.ui.fragment.share.AddAriticleFragment"
         android:label="AddAriticleFragment" />
     <fragment
         android:id="@+id/ariticleFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.share.AriticleFragment"
+        android:name="com.xysss.androidnews.ui.fragment.share.AriticleFragment"
         android:label="AriticleFragment">
         <action
             android:id="@+id/action_ariticleFragment_to_addAriticleFragment"
@@ -219,7 +219,7 @@
     </fragment>
     <fragment
         android:id="@+id/todoListFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.todo.TodoListFragment"
+        android:name="com.xysss.androidnews.ui.fragment.todo.TodoListFragment"
         android:label="TodoListFragment">
         <action
             android:id="@+id/action_todoListFragment_to_addTodoFragment"
@@ -231,12 +231,12 @@
     </fragment>
     <fragment
         android:id="@+id/addTodoFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.todo.AddTodoFragment"
+        android:name="com.xysss.androidnews.ui.fragment.todo.AddTodoFragment"
         android:label="AddTodoFragment" />
 
     <fragment
         android:id="@+id/demoFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DemoFragment"
+        android:name="com.xysss.androidnews.ui.fragment.demo.DemoFragment"
         android:label="DemoFragment">
 
         <action
@@ -271,19 +271,19 @@
         app:popExitAnim="@anim/slide_out_right" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.setting.SettingFragment"
+        android:name="com.xysss.androidnews.ui.fragment.setting.SettingFragment"
         android:label="SettingFragment" />
     <fragment
         android:id="@+id/pagerFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.PagerFragment"
+        android:name="com.xysss.androidnews.ui.fragment.demo.PagerFragment"
         android:label="PagerFragment" />
     <fragment
         android:id="@+id/downLoadFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DownLoadFragment"
+        android:name="com.xysss.androidnews.ui.fragment.demo.DownLoadFragment"
         android:label="DownLoadFragment" />
     <fragment
         android:id="@+id/downLoadLibraryFragment"
-        android:name="me.hgj.jetpackmvvm.demo.ui.fragment.demo.DownLoadLibraryFragment"
+        android:name="com.xysss.androidnews.ui.fragment.demo.DownLoadLibraryFragment"
         android:label="DownLoadLibraryFragment" />
 
 </navigation>

@@ -53,7 +53,7 @@
                 android:textSize="13dp"
                 tools:text="https:\/\/www.wanandroid.com\/blog\/show\" />
 
-            <me.hgj.jetpackmvvm.demo.app.weight.customview.CollectView
+            <com.xysss.androidnews.app.weight.customview.CollectView
                 android:id="@+id/item_collecturl_collect"
                 android:layout_width="24dp"
                 android:layout_height="24dp" />
