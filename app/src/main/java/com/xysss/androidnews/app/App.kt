@@ -1,5 +1,6 @@
 package com.xysss.androidnews.app
 
+
 import androidx.multidex.MultiDex
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.kingja.loadsir.callback.SuccessCallback
@@ -15,8 +16,8 @@ import com.xysss.androidnews.app.weight.loadcallback.ErrorCallback
 import com.xysss.androidnews.app.weight.loadcallback.LoadingCallback
 import com.xysss.androidnews.ui.activity.ErrorActivity
 import com.xysss.androidnews.ui.activity.WelcomeActivity
-import com.xysss.jetpackmvvm.BuildConfig
 import com.xysss.jetpackmvvm.base.BaseApp
+import com.xysss.jetpackmvvm.demo.BuildConfig
 import com.xysss.jetpackmvvm.ext.util.jetpackMvvmLog
 import com.xysss.jetpackmvvm.ext.util.logd
 
@@ -66,9 +67,6 @@ class App : BaseApp() {
         Bugly.init(context, if (BuildConfig.DEBUG) "de489df03b" else "de489df03b", BuildConfig.DEBUG)
         "".logd()
         jetpackMvvmLog = BuildConfig.DEBUG
-
-
-
 
         //防止项目崩溃，崩溃后打开错误界面
         CaocConfig.Builder.create()
