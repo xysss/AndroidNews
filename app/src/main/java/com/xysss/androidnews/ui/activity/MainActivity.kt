@@ -52,7 +52,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                 }
             }
         })
-        appViewModel.appColor.value?.let {
+        appViewModel.appColor.value?.let { //let函数 默认当前这个对象作为闭包的it参数，返回值是函数里面最后一行，或者指定return
             window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
             supportActionBar?.setBackgroundDrawable(ColorDrawable(it))
             StatusBarUtil.setColor(this, it, 0) }

@@ -43,7 +43,7 @@ class WelcomeActivity : BaseActivity<BaseViewModel, ActivityWelcomeBinding>() {
         if (CacheUtil.isFirst()) {
             //是第一次打开App 显示引导页
             welcome_image.gone()
-            mViewPager.apply {
+            mViewPager.apply {  //apply函数 在函数范围内，可以任意调用该对象的任意方法，并返回该对象
                 adapter = WelcomeBannerAdapter()
                 setLifecycleRegistry(lifecycle)
                 registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
