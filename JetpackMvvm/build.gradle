@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'com.github.dcendents.android-maven'
     //id 'com.github.panpf.bintray-publish'
 }
 
@@ -49,7 +50,7 @@ dependencies {
     api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     api 'com.kunminx.archi:unpeek-livedata:4.4.1-beta1'
     //navigation
-    api 'androidx.navigation:navigation-runtime-ktx:2.3.1'
+    api 'androidx.navigation:navigation-runtime-ktx:2.3.2'
     //retrofit
     api "com.squareup.retrofit2:retrofit:2.9.0"
     api "com.squareup.retrofit2:converter-gson:2.9.0"
