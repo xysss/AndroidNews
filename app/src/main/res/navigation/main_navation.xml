@@ -253,6 +253,14 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_demoFragment_to_roomDemoFragment"
+            app:destination="@id/roomDemoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
 
     <action
@@ -284,6 +292,10 @@
     <fragment
         android:id="@+id/downLoadLibraryFragment"
         android:name="com.xysss.androidnews.ui.fragment.demo.DownLoadLibraryFragment"
+        android:label="DownLoadLibraryFragment" />
+    <fragment
+        android:id="@+id/roomDemoFragment"
+        android:name="com.xysss.androidnews.ui.fragment.demo.room_db.RoomSampleFragment"
         android:label="DownLoadLibraryFragment" />
 
 </navigation>

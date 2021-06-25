@@ -39,6 +39,11 @@ class DemoFragment : BaseFragment<DemoViewModel, FragmentDemoBinding>() {
             //测试一下利用三方库下载
             nav().navigateAction(R.id.action_demoFragment_to_downLoadLibraryFragment)
         }
+
+        fun roomTestDemo(){
+            //Room数据库的使用
+            nav().navigateAction(R.id.action_demoFragment_to_roomDemoFragment)
+        }
     }
 
 
