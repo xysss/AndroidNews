@@ -42,7 +42,7 @@ class DemoFragment : BaseFragment<DemoViewModel, FragmentDemoBinding>() {
 
         fun roomTestDemo(){
             //Room数据库的使用
-            nav().navigateAction(R.id.action_demoFragment_to_roomDemoFragment)
+            nav().navigateAction(R.id.action_demoFragment_to_roomSimpleFragment)
         }
     }
 

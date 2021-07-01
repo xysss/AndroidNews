@@ -1,31 +1,34 @@
 package com.xysss.androidnews.ui.fragment.demo.room_db
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import com.xysss.jetpackmvvm.base.appContext
 import com.xysss.jetpackmvvm.base.viewmodel.BaseViewModel
-import com.xysss.jetpackmvvm.ext.download.DownloadResultState
+
 
 /**
- * Author:bysd-2
- * Time:2021/6/2217:49
+ * Create Date：2020/01/01
+ * 实现Room数据的基本操作
+ * 王志强
  */
 class RoomSampleViewModel : BaseViewModel() {
-    private val userRepository = UserRepository()
-    val allUsersLive: LiveData<List<User>>? get() = userRepository.getListLiveData()
+    private val wordRepository: WordRepository = WordRepository(appContext)
+    val allWordsLive: LiveData<List<Word>>
+        get() = wordRepository.listLiveData
 
-    suspend fun insertUsers(users: User) {
-        userRepository.insertUsers(users)
+    fun insertWords(vararg words: Word?) {
+        wordRepository.insertWords(*words)
     }
 
-    suspend fun updateUsers(users: User) {
-        userRepository.updateUsers(users)
+    fun updateWords(vararg words: Word?) {
+        wordRepository.updateWords(*words)
     }
 
-    suspend fun deleteUsers(users: User) {
-        userRepository.deleteUsers(users)
+    fun deleteWords(vararg words: Word?) {
+        wordRepository.deleteWords(*words)
     }
 
-    suspend fun queryUsers(users: User) {
-        userRepository.queryUsers(users)
+    fun deleteAllWords() {
+        wordRepository.deleteAllWords()
     }
+
 }

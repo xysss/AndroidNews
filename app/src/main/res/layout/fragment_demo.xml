@@ -70,7 +70,7 @@
             android:layout_marginHorizontal="12dp"
             android:layout_marginTop="12dp"
             android:foreground="?android:attr/selectableItemBackground"
-            android:onClick="@{()->click.downloadLibrary()}"
+            android:onClick="@{()->click.roomTestDemo()}"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="4dp"
             app:cardElevation="4dp"

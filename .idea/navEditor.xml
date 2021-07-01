@@ -101,7 +101,7 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_demoFragment_to_roomDemoFragment">
+                            <entry key="action_demoFragment_to_roomSimpleFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -310,13 +310,13 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="roomDemoFragment">
+                  <entry key="roomSampleFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="468" />
-                            <option name="y" value="-387" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                       </LayoutPositions>

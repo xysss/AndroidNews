@@ -17,6 +17,7 @@ ext {
             keyAlias     : 'xys',
             keyPassword  : 'xys123456'
     ]
+    roomVersion = '2.2.5'
 }
 
 
