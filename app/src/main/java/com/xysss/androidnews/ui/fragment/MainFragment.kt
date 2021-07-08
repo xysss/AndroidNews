@@ -11,6 +11,7 @@ import com.xysss.androidnews.app.ext.interceptLongClick
 import com.xysss.androidnews.app.ext.setUiTheme
 import com.xysss.androidnews.databinding.FragmentMainBinding
 import com.xysss.androidnews.viewmodel.state.MainViewModel
+import com.xysss.jetpackmvvm.ext.util.loge
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
@@ -43,6 +44,16 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
         appViewModel.appColor.observeInFragment(this, Observer {
             setUiTheme(it, mainBottom)
         })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        "onPause".loge("hgj")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        "onResume".loge("hgj")
     }
 
 }

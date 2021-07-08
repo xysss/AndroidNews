@@ -5,7 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.xysss.jetpackmvvm.navigation.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment
+
 
 /**
  * Author:bysd-2

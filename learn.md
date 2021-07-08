@@ -36,6 +36,12 @@
 - **1.1 在root's build.gradle中加入Jitpack仓库**
 
 ```
+buildscript {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 allprojects {
     repositories {
         ...
@@ -49,7 +55,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.hegaojian:JetpackMvvm:1.2.2'
+  implementation 'com.github.hegaojian:JetpackMvvm:1.2.3'
 }
 ```
 
@@ -60,7 +66,7 @@ AndroidStudio 4.0 以下版本------>
 android {
     ...
     dataBinding {
-        enabled = true 
+        enabled = true
     }
 }
 
@@ -71,7 +77,7 @@ android {
         dataBinding = true
     }
 }
- 
+
 ```
 
 ## 2.继承基类
@@ -121,7 +127,7 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
      * 当前Fragment绑定的视图布局Id abstract修饰供子类实现
      */
     abstract override fun layoutId(): Int
-   
+
     abstract override fun initView(savedInstanceState: Bundle?)
 
     /**
@@ -133,14 +139,14 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
      * 创建liveData数据观察 懒加载之后才会触发
      */
     override override fun createObserver()
-  
+
     /**
-     * Fragment执行onViewCreated后触发的方法 
+     * Fragment执行onViewCreated后触发的方法
      */
     override fun initData() {
 
     }
-    
+
    /**
      * 打开等待框 在这里实现你的等待框展示
      */
@@ -164,41 +170,41 @@ abstract class BaseFragment<VM : BaseViewModel,DB:ViewDataBinding> : BaseVmDbFra
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:bind="http://schemas.android.com/tools">
     <data>
-       
+
     </data>
     <LinearLayout>
        ....
     </LinearLayout>
- </layout>   
+ </layout>
 ```
 - **3.2 创建LoginViewModel类继承BaseViewModel**
 
 ```
 class LoginViewModel : BaseViewModel() {
-  
+
 }
 ```
 
 - **3.3 创建LoginFragment 继承基类传入相关泛型,第一个泛型为你创建的LoginViewModel,第二个泛型为ViewDataBind，保存fragment_login.xml后databinding会生成一个FragmentLoginBinding类。（如果没有生成，试着点击Build->Clean Project）**
 ```
 class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
-    
+
     /**
      *  当前fragment绑定的布局
      */
     override fun layoutId() = R.layout.fragment_login
-    
+
     /**
      *  初始化操作
      */
     override fun initView(savedInstanceState: Bundle?) {
         ...
     }
-    
+
     /**
      *  fragment 懒加载
      */
-    override fun lazyLoadData() { 
+    override fun lazyLoadData() {
         ...
     }
 }
@@ -211,7 +217,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 class NetworkApi : BaseNetworkApi() {
 
    companion object {
-         
+
         val instance: NetworkApi by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { NetworkApi() }
 
         //双重校验锁式-单例 封装NetApiService 方便直接快速调用
@@ -219,7 +225,7 @@ class NetworkApi : BaseNetworkApi() {
             instance.getApi(ApiService::class.java, ApiService.SERVER_URL)
         }
     }
-   
+
     /**
      * 实现重写父类的setHttpClientBuilder方法，
      * 在这里可以添加拦截器，可以对 OkHttpClient.Builder 做任意你想要做的骚操作
@@ -278,7 +284,7 @@ data class ApiResponse<T>(var errorCode: Int, var errorMsg: String, var data: T)
 
 }
 ```
-- **4.3 在ViewModel中发起请求，所有请求都是在viewModelScope中启动，请求会发生在IO线程，最终回调在主线程上，当页面销毁的时候，请求会统一取消，不用担心内存泄露的风险，框架做了2种请求使用方式**  
+- **4.3 在ViewModel中发起请求，所有请求都是在viewModelScope中启动，请求会发生在IO线程，最终回调在主线程上，当页面销毁的时候，请求会统一取消，不用担心内存泄露的风险，框架做了2种请求使用方式**
 
 **1、将请求数据包装给ResultState，在Activity/Fragment中去监听ResultState拿到数据做处理**
 
@@ -287,10 +293,10 @@ class RequestLoginViewModel: BaseViewModel {
 
   //自动脱壳过滤处理请求结果，自动判断结果是否成功
     var loginResult = MutableLiveData<ResultState<UserInfo>>()
-    
+
   //不用框架帮脱壳
     var loginResult2 = MutableLiveData<ResultState<ApiResponse<UserInfo>>>()
-    
+
   fun login(username: String, password: String){
    //1.在 Activity/Fragment的监听回调中拿到已脱壳的数据（项目有基类的可以用）
         request(
@@ -299,39 +305,39 @@ class RequestLoginViewModel: BaseViewModel {
             true,//是否显示等待框，，默认false不显示 可以默认不传
             "正在登录中..."//等待框内容，可以默认不填请求网络中...
         )
-        
+
    //2.在Activity/Fragment中的监听拿到未脱壳的数据，你可以自己根据code做业务需求操作（项目没有基类的可以用）
         requestNoCheck(
           {HttpRequestCoroutine.login(username,password)},
           loginResult2,
           true,
-          "正在登录中...") 
+          "正在登录中...")
 }
 
 
 class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
-    
+
     private val requestLoginRegisterViewModel: RequestLoginRegisterViewModel by viewModels()
-    
+
     /**
      *  当前fragment绑定的布局
      */
     override fun layoutId() = R.layout.fragment_login
-    
+
     /**
      *  初始化操作
      */
     override fun initView(savedInstanceState: Bundle?) {
         ...
     }
-    
+
     /**
      *  fragment 懒加载
      */
-    override fun lazyLoadData() { 
+    override fun lazyLoadData() {
         ...
     }
-    
+
     override fun createObserver(){
       //脱壳
        requestLoginRegisterViewModel.loginResult.observe(viewLifecycleOwner,
@@ -344,7 +350,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                     showMessage(it.errorMsg)
                 })
             })
-    
+
        //不脱壳
        requestLoginRegisterViewModel.loginResult2.observe(viewLifecycleOwner, Observer {resultState ->
                parseState(resultState,{
@@ -360,7 +366,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
                    showMessage(it.errorMsg)
                })
            })
-   } 
+   }
 }
 ```
 
@@ -368,7 +374,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
 ```
 class RequestLoginViewModel : BaseViewModel() {
-    
+
   fun login(username: String, password: String){
    //1.拿到已脱壳的数据（项目有基类的可以用）
      request({HttpRequestCoroutine.login(username,password)},{
@@ -378,7 +384,7 @@ class RequestLoginViewModel : BaseViewModel() {
              //请求失败 网络异常，或者请求结果码错误都会回调在这里
              it.errorMsg.logd()
          },true,"正在登录中...")
-        
+
    //2.拿到未脱壳的数据，你可以自己根据code做业务需求操作（项目没有基类或者不想框架帮忙脱壳的可以用）
        requestNoCheck({HttpRequestCoroutine.login(username,password)},{
             //请求成功 自己拿到数据做业务需求操作
@@ -394,7 +400,7 @@ class RequestLoginViewModel : BaseViewModel() {
             it.errorMsg.logd()
         },true,"正在登录中...")
 }
- 
+
 ```
 ### 注意：使用该请求方式时需要注意，如果该ViewModel并不是跟Activity/Fragment绑定的泛型ViewModel，而是
 val mainViewModel:MainViewModel by viewModels()
@@ -417,7 +423,7 @@ val mainViewModel：MainViewModel by activityViewModels()
 ```
 //在activity中获取当前Activity级别作用域的ViewModel
  private val mainViewModel:MainViewModel by viewModels()
- 
+
 //在activity中获取Application级别作用域的ViewModel（注，这个是本框架提供的，Application类继承框架的BaseApp才有用）
  private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
 
@@ -437,6 +443,20 @@ private val mainViewModel by lazy { getAppViewModel<MainViewModel>()}
  me.hgj.jetpackmvvm.ext.view
  的包中看，反正你也可以自己写，按照自己的喜好与需求来
 ```
+
+## 7.混淆
+
+```
+-keep class me.hgj.jetpackmvvm.**{*;}
+-keep class com.google.android.material.** {*;}
+-keep class androidx.** {*;}
+-keep public class * extends androidx.**
+-keep interface androidx.** {*;}
+-dontwarn com.google.android.material.**
+-dontnote com.google.android.material.**
+-dontwarn androidx.**
+```
+
 
 ## 感谢
 - [Jetpack-MVVM-Best-Practice](https://github.com/KunMinX/Jetpack-MVVM-Best-Practice)

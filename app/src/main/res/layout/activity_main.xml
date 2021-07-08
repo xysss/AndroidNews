@@ -12,7 +12,7 @@
         
         <fragment
             android:id="@+id/host_fragment"
-            android:name="com.xysss.jetpackmvvm.navigation.NavHostFragment"
+            android:name="com.xysss.jetpackmvvm.navigation.NavHostFragmentHideShow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
