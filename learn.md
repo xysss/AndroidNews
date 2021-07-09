@@ -15,11 +15,9 @@
 ## 演示Demo
  已用该库重构了我之前的玩安卓项目，利用Navigation组件以单Activity+Fragment架构编写，优化了很多代码，对比之前的mvp项目，开发效率与舒适度要提高了不少，想看之前MVP的项目可以去 [https://github.com/hegaojian/WanAndroid](https://github.com/hegaojian/WanAndroid) 
  
-**打个小广告** 新建了个项目框架，封装了大部分需求，去除了navigation，网络请求使用了 RxHttp，使用更方便，开发速度更高，有兴趣的可以star一下看看 [地址](https://github.com/hegaojian/ProjectTemplate)
- 
-#### 效果图展示 
+#### 效果图展示
 ![项目效果图](https://upload-images.jianshu.io/upload_images/9305757-818106225dd01e65.gif?imageMogr2/auto-orient/strip)
- 
+
 #### APK下载：
 
 - [Github下载](https://github.com/hegaojian/JetpackMvvm/releases/download/1.1.8/app-release.apk)
@@ -29,8 +27,8 @@
 - 扫码下载(推荐)
 
 ![](https://upload-images.jianshu.io/upload_images/9305757-4999111e26d5e93a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-  
-  
+
+
 ## 1.如何集成
 
 - **1.1 在root's build.gradle中加入Jitpack仓库**
@@ -55,7 +53,7 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.hegaojian:JetpackMvvm:1.2.3'
+  implementation 'com.github.hegaojian:JetpackMvvm:1.2.4'
 }
 ```
 
