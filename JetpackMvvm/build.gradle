@@ -1,26 +1,31 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-android-extensions'
-    id 'kotlin-kapt'
-    id 'com.github.dcendents.android-maven'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.hegaojian'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
+        versionCode 2
+        versionName "1.0.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
     buildFeatures {
         dataBinding = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
 
     compileOptions {
@@ -59,14 +64,3 @@ dependencies {
     api 'me.jessyan:retrofit-url-manager:1.4.0'
 }
 
-/*
-publish {
-    userOrg = 'hegaojian'//bintray网站中的用户名，网站链接：https://bintray.com/
-    repoName = 'cxk'//仓库名字 这个可以随便起,比如我觉得我比较菜，所以我取了个蔡徐坤
-    groupId = 'me.hegj'//路径 名等于“me.hegj.JetpackMvvm:1.0.0”中的   me.hegj，你也可以写com.xxx
-    artifactId = 'JetpackMvvm'//项目名 等于“me.hegj.JetpackMvvm:1.0.0”中的  JetpackMvvm
-    publishVersion = '1.2.1'//版本号 等于“me.hegj.JetpackMvvm:1.0.0”中的 1.0.0
-    desc = 'An Android Jetpack-MVVM framework,JetpackMvvm is nb?'//说明，不重要的东西，随便写
-    website = 'https://github.com/hegaojian/JetpackMvvm'//项目主页，用GitHub地址
-    licences = ['Apache-2.0']//协议
-}*/

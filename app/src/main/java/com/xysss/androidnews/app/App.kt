@@ -16,8 +16,8 @@ import com.xysss.androidnews.app.weight.loadcallback.ErrorCallback
 import com.xysss.androidnews.app.weight.loadcallback.LoadingCallback
 import com.xysss.androidnews.ui.activity.ErrorActivity
 import com.xysss.androidnews.ui.activity.WelcomeActivity
+import com.xysss.jetpackmvvm.BuildConfig
 import com.xysss.jetpackmvvm.base.BaseApp
-import com.xysss.jetpackmvvm.demo.BuildConfig
 import com.xysss.jetpackmvvm.ext.util.jetpackMvvmLog
 import com.xysss.jetpackmvvm.ext.util.logd
 
