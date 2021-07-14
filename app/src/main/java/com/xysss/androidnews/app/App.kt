@@ -47,6 +47,8 @@ class App : BaseApp() {
         instance = this
         eventViewModelInstance = getAppViewModelProvider().get(EventViewModel::class.java)
         appViewModelInstance = getAppViewModelProvider().get(AppViewModel::class.java)
+        //当您的应用及其引用的库包含的方法数超过 65536 时，您会遇到一个构建错误，指明您的应用已达到 Android 构建架构规定的引用限制：
+        //为方法数超过 64K 的应用启用 MultiDex
         MultiDex.install(this)
         //界面加载管理 初始化
         LoadSir.beginBuilder()

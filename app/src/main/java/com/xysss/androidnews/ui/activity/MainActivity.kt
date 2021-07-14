@@ -32,9 +32,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     override fun layoutId() = R.layout.activity_main
 
     override fun initView(savedInstanceState: Bundle?) {
-        //进入首页检查更新
+        //bugly进入首页检查更新
         Beta.checkUpgrade(false, true)
-
+        //返回按键的监听
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val nav = Navigation.findNavController(this@MainActivity, R.id.host_fragment)
