@@ -1,10 +1,12 @@
 package com.xysss.androidnews.ui.fragment.demo
 
 import android.os.Bundle
+import androidx.navigation.fragment.NavHostFragment
 import com.xysss.androidnews.R
 import com.xysss.androidnews.app.base.BaseFragment
 import com.xysss.androidnews.app.ext.initClose
 import com.xysss.androidnews.databinding.FragmentDemoBinding
+import com.xysss.androidnews.ui.fragment.demo.form.FormEntity
 import com.xysss.androidnews.viewmodel.state.DemoViewModel
 import com.xysss.jetpackmvvm.ext.nav
 import com.xysss.jetpackmvvm.ext.navigateAction
@@ -43,6 +45,14 @@ class DemoFragment : BaseFragment<DemoViewModel, FragmentDemoBinding>() {
         fun roomTestDemo(){
             //Room数据库的使用
             nav().navigateAction(R.id.action_demoFragment_to_roomSimpleFragment)
+        }
+        fun formDemo(){
+            //表单编辑
+            val entity = FormEntity("12345678","wzq","2020年08月08日",true)
+            //传入实体数据
+            val mBundle = Bundle()
+            mBundle.putSerializable("entity", entity)
+            nav().navigateAction(R.id.action_demoFragment_to_FormFragment,mBundle)
         }
     }
 

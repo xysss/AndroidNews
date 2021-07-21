@@ -1,10 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'  //已经废弃被View Binding 取代
-
 apply plugin: 'kotlin-kapt'  // 添加 kapt 插件支持
+apply plugin: 'kotlin-android-extensions'  //已经废弃被View Binding 取代
 
 android {
     signingConfigs {
@@ -154,4 +151,5 @@ dependencies {
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     //6.0以上权限请求管理
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+
 }
