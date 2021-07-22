@@ -18,8 +18,7 @@ class RoomSampleFragment : BaseFragment<RoomSampleViewModel,FragmentRoom1Binding
         return R.layout.fragment_room1
     }
 
-    override fun initData() {
-        super.initData()
+    override fun initView(savedInstanceState: Bundle?) {
         mViewModel.allWordsLive.observe(this, Observer { words ->
             val text = StringBuilder()
             for (i in words.indices) {
@@ -47,8 +46,5 @@ class RoomSampleFragment : BaseFragment<RoomSampleViewModel,FragmentRoom1Binding
         }
     }
 
-    override fun initView(savedInstanceState: Bundle?) {
-        TODO("Not yet implemented")
-    }
 
 }
