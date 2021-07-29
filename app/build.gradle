@@ -20,8 +20,8 @@ android {
         applicationId "com.xysss.androidnews"
         minSdkVersion 21
         targetSdkVersion 30//开启目标版本以下的功能特性
-        versionCode cfgs.versionCode
-        versionName cfgs.versionName
+        versionCode 25
+        versionName "1.2.5"
         testInstrumentationRunner cfgs.testInstrumentationRunner  //用于启用JUnit测试
         resConfigs "zh-rCN", "zh-rHK", "zh-rMO", "zh-rTW" // 去除无用语言
         signingConfig signingConfigs.debug

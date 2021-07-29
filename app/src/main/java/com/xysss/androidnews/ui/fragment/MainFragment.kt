@@ -46,14 +46,4 @@ class MainFragment : BaseFragment<MainViewModel, FragmentMainBinding>() {
         })
     }
 
-    override fun onPause() {
-        super.onPause()
-        "onPause".loge("hgj")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        "onResume".loge("hgj")
-    }
-
 }
