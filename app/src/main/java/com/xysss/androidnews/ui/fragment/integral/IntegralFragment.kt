@@ -50,7 +50,7 @@ class IntegralFragment : BaseFragment<IntegralViewModel, FragmentIntegralBinding
 
     override fun initView(savedInstanceState: Bundle?) {
         mDatabind.vm = mViewModel
-        rank = arguments?.getParcelable("rank")
+        rank = arguments?.getParcelable("rank")  //从activity 获取值
         rank.notNull({
             mViewModel.rank.set(rank)
         }, {
