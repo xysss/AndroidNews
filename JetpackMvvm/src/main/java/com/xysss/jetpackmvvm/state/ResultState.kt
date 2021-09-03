@@ -8,7 +8,7 @@ import com.xysss.jetpackmvvm.network.ExceptionHandle
 /**
  * Author:bysd-2
  * Time:2021/4/2917:39
- * 描述　: 自定义结果集封装类
+ * 描述　: 自定义结果集封装类，sealed密封类用来表示受限的类继承结构
 */
 sealed class ResultState<out T> {
     companion object {
@@ -31,7 +31,6 @@ fun <T> MutableLiveData<ResultState<T>>.paresResult(result: BaseResponse<T>) {
             ResultState.onAppSuccess(result.getResponseData())
         }
         else -> {
-
             ResultState.onAppError(AppException(result.getResponseCode(), result.getResponseMsg()))
         }
     }

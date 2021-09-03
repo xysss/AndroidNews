@@ -40,7 +40,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
         mDatabind.click = ProxyClick()
 
         toolbar.initClose("登录") {
-            nav().navigateUp()
+            nav().navigateUp()  //返回上一级
         }
         //设置颜色跟主题颜色一致
         appViewModel.appColor.value?.let {
@@ -54,7 +54,7 @@ class LoginFragment : BaseFragment<LoginRegisterViewModel, FragmentLoginBinding>
 
         requestLoginRegisterViewModel.loginResult.observe(viewLifecycleOwner, Observer { resultState ->
             parseState(resultState, {
-                //登录成功 通知账户数据发生改变鸟
+                //登录成功 通知账户数据发生改变了
                 CacheUtil.setUser(it)
                 CacheUtil.setIsLogin(true)
                 appViewModel.userInfo.value = it

@@ -145,7 +145,7 @@ fun Fragment.joinQQGroup(key: String): Boolean {
 }
 
 /**
- * 拦截登录操作，如果没有登录跳转登录，登录过了贼执行你的方法
+ * 拦截登录操作，如果没有登录跳转登录，登录过了再执行你的方法
  */
 fun NavController.jumpByLogin(action: (NavController) -> Unit) {
     if (CacheUtil.isLogin()) {
